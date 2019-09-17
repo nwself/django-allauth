@@ -1,5 +1,6 @@
 import requests
 
+from allauth.socialaccount import app_settings
 from allauth.socialaccount.providers.oauth2.views import (
     OAuth2Adapter,
     OAuth2CallbackView,
@@ -12,6 +13,7 @@ from .provider import CanvasProvider
 class CanvasOAuth2Adapter(OAuth2Adapter):
     provider_id = CanvasProvider.id
 
+    provider_default_url = "https://www.instructure.com/canvas/" # TODO this is trash
     settings = app_settings.PROVIDERS.get(provider_id, {})
     provider_base_url = settings.get("CANVAS_URL", provider_default_url)
 
