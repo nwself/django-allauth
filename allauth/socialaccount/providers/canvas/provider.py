@@ -1,0 +1,49 @@
+from allauth.account.models import EmailAddress
+
+# from allauth.socialaccount.app_settings import QUERY_EMAIL
+from allauth.socialaccount.providers.base import ProviderAccount
+from allauth.socialaccount.providers.oauth2.provider import OAuth2Provider
+
+
+class CanvasAccount(ProviderAccount):
+    # def get_profile_url(self):
+    #     return self.account.extra_data.get("profileUrl")
+
+    def get_avatar_url(self):
+        return self.account.extra_data.get("avatar_url", "")
+
+    def to_str(self):
+        dflt = super(CanvasAccount, self).to_str()
+        return self.account.extra_data.get("name", dflt)
+
+
+class CanvasProvider(OAuth2Provider):
+    id = "canvas"
+    name = "Canvas"
+    account_class = CanvasAccount
+
+    def get_default_scope(self):
+        scope = ["auth/userinfo"]
+        # if QUERY_EMAIL:
+        #     scope += ['email']
+        return scope
+
+    def extract_uid(self, data):
+        return str(data["id"])
+
+    def extract_common_fields(self, data):
+        return {
+            "username": data.get("login_id"),
+            "email": data.get("primary_email"),
+            "name": data.get("name"),
+        }
+
+    def extract_email_addresses(self, data):
+        ret = []
+        email = data.get("primary_email")
+        if email:
+            ret.append(EmailAddress(email=email, verified=True, primary=True))
+        return ret
+
+
+provider_classes = [CanvasProvider]
