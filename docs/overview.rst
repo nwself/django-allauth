@@ -63,6 +63,8 @@ Supported Providers
 
 - Box (OAuth2)
 
+- Canvas (OAuth2)
+
 - CERN (OAuth2)
 
 - Dataporten (OAuth2)

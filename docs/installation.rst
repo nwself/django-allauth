@@ -59,6 +59,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.bitbucket',
         'allauth.socialaccount.providers.bitbucket_oauth2',
         'allauth.socialaccount.providers.bitly',
+        'allauth.socialaccount.providers.canvas',
         'allauth.socialaccount.providers.cern',
         'allauth.socialaccount.providers.coinbase',
         'allauth.socialaccount.providers.dataporten',

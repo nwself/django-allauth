@@ -222,6 +222,24 @@ App registration (get your key and secret here)
 Development callback URL
     http://localhost:8000/accounts/box/login/callback/
 
+Canvas
+------
+
+An admin account can register an OAuth2 app following these instructions
+    https://community.canvaslms.com/docs/DOC-12657-4214441833
+
+Development callback URL
+    http://localhost:8000/accounts/canvas/login/callback/
+
+Specify the URL of your institution's Canvas server as follows:
+
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'canvas': {
+            'CANVAS_URL': 'https://canvas.example.edu',
+        }
+    }
 
 CERN
 ----
