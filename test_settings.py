@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     "allauth.socialaccount.providers.bitbucket_oauth2",
     "allauth.socialaccount.providers.bitly",
     "allauth.socialaccount.providers.box",
+    "allauth.socialaccount.providers.canvas",
     "allauth.socialaccount.providers.cilogon",
     "allauth.socialaccount.providers.clever",
     "allauth.socialaccount.providers.coinbase",

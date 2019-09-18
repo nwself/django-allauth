@@ -1,20 +1,16 @@
 from allauth.account.models import EmailAddress
 
-# from allauth.socialaccount.app_settings import QUERY_EMAIL
 from allauth.socialaccount.providers.base import ProviderAccount
 from allauth.socialaccount.providers.oauth2.provider import OAuth2Provider
 
 
 class CanvasAccount(ProviderAccount):
-    # def get_profile_url(self):
-    #     return self.account.extra_data.get("profileUrl")
-
     def get_avatar_url(self):
         return self.account.extra_data.get("avatar_url", "")
 
     def to_str(self):
-        dflt = super(CanvasAccount, self).to_str()
-        return self.account.extra_data.get("name", dflt)
+        name = super(CanvasAccount, self).to_str()
+        return self.account.extra_data.get("name", name)
 
 
 class CanvasProvider(OAuth2Provider):
