@@ -22,12 +22,6 @@ class CanvasProvider(OAuth2Provider):
     name = "Canvas"
     account_class = CanvasAccount
 
-    def get_default_scope(self):
-        scope = ["auth/userinfo"]
-        # if QUERY_EMAIL:
-        #     scope += ['email']
-        return scope
-
     def extract_uid(self, data):
         return str(data["id"])
 

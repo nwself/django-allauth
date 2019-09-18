@@ -13,15 +13,15 @@ from .provider import CanvasProvider
 class CanvasOAuth2Adapter(OAuth2Adapter):
     provider_id = CanvasProvider.id
 
-    provider_default_url = "https://www.instructure.com/canvas/" # TODO this is trash
     settings = app_settings.PROVIDERS.get(provider_id, {})
-    provider_base_url = settings.get("CANVAS_URL", provider_default_url)
+    provider_base_url = settings.get("CANVAS_URL", "")
 
     access_token_url = "{0}/login/oauth2/token/".format(provider_base_url)
     authorize_url = "{0}/login/oauth2/auth".format(provider_base_url)
     profile_url = "{0}/api/v1/users/self/profile".format(provider_base_url)
 
     def complete_login(self, request, app, token, **kwargs):
+        print(token)
         resp = requests.get(
             self.profile_url, headers={"Authorization": "Bearer " + token.token}
         )
