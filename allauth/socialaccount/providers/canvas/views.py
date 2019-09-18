@@ -1,6 +1,5 @@
 import requests
 
-from allauth.socialaccount import app_settings
 from allauth.socialaccount.providers.oauth2.views import (
     OAuth2Adapter,
     OAuth2CallbackView,
@@ -13,12 +12,21 @@ from .provider import CanvasProvider
 class CanvasOAuth2Adapter(OAuth2Adapter):
     provider_id = CanvasProvider.id
 
-    settings = app_settings.PROVIDERS.get(provider_id, {})
-    provider_base_url = settings.get("CANVAS_URL")
+    @property
+    def base_url(self):
+        return self.get_provider().get_app(self.request).key
 
-    access_token_url = "{0}/login/oauth2/token/".format(provider_base_url)
-    authorize_url = "{0}/login/oauth2/auth".format(provider_base_url)
-    profile_url = "{0}/api/v1/users/self/profile".format(provider_base_url)
+    @property
+    def access_token_url(self):
+        return "{0}/login/oauth2/token/".format(self.base_url)
+
+    @property
+    def authorize_url(self):
+        return "{0}/login/oauth2/auth".format(self.base_url)
+
+    @property
+    def profile_url(self):
+        return "{0}/api/v1/users/self/profile".format(self.base_url)
 
     def complete_login(self, request, app, token, **kwargs):
         resp = requests.get(
