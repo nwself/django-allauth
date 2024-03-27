@@ -231,15 +231,8 @@ An admin account can register an OAuth2 app following these instructions
 Development callback URL
     http://localhost:8000/accounts/canvas/login/callback/
 
-Specify the URL of your institution's Canvas server as follows:
-
-.. code-block:: python
-
-    SOCIALACCOUNT_PROVIDERS = {
-        'canvas': {
-            'CANVAS_URL': 'https://canvas.example.edu',
-        }
-    }
+Specify your institution's Canvas server in the database
+    When you create the SocialApp through the admin, fill in the client ID and secret key like normal. In the "key" field put your Canvas domain in the form of ``https://canvas.example.edu``.
 
 CERN
 ----
