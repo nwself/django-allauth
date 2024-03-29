@@ -4,9 +4,9 @@ Overview
 Requirements
 ------------
 
-- Python 3.5, 3.6, 3.7 or 3.8
+- Python 2.7, 3.3, 3.4, 3.5 or 3.6
 
-- Django (2.0+)
+- Django (1.11+)
 
 - python-openid or python3-openid (depending on your Python version)
 
@@ -41,8 +41,6 @@ Supported Providers
 
 - Amazon (OAuth2)
 
-- Amazon Cognito (OAuth2)
-
 - AngelList (OAuth2)
 
 - Asana (OAuth2)
@@ -65,6 +63,8 @@ Supported Providers
 
 - Box (OAuth2)
 
+- Canvas (OAuth2)
+
 - CERN (OAuth2)
 
 - Dataporten (OAuth2)
@@ -82,8 +82,6 @@ Supported Providers
 - Dwolla (OAuth2)
 
 - Edmodo (OAuth2)
-
-- Edx (open.edx.org) (OAuth2)
 
 - Eve Online (OAuth2)
 
@@ -117,8 +115,6 @@ Supported Providers
 
 - Kakao (OAuth2)
 
-- Keycloak (OAuth2)
-
 - Line (OAuth2)
 
 - LinkedIn (OAuth, OAuth2)
@@ -130,8 +126,6 @@ Supported Providers
 - Meetup (OAuth2)
 
 - Microsoft (Graph) (OAuth2)
-
-- Mixer (OAuth2)
 
 - NextCloud (OAuth2)
 
@@ -202,10 +196,6 @@ Supported Providers
 - Xing (OAuth)
 
 - Yahoo (OAuth2)
-
-- Yandex (OAuth2)
-
-- YNAB (OAuth2)
 
 
 Note: OAuth/OAuth2 support is built using a common code base, making it easy to add support for additional OAuth/OAuth2 providers. More will follow soon...
