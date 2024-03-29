@@ -1,6 +1,7 @@
 from allauth.account.models import EmailAddress
 
 from allauth.socialaccount.providers.base import ProviderAccount
+from allauth.socialaccount.providers.canvas.views import CanvasOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.provider import OAuth2Provider
 
 
@@ -17,6 +18,7 @@ class CanvasProvider(OAuth2Provider):
     id = "canvas"
     name = "Canvas"
     account_class = CanvasAccount
+    oauth2_adapter_class = CanvasOAuth2Adapter
 
     def extract_uid(self, data):
         return str(data["id"])
